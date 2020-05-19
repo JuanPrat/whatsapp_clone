@@ -8,15 +8,20 @@ class CallPage extends StatefulWidget {
 class _CallPageState extends State<CallPage> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        _CallItem(),
-        _CallItem(
-          isReceivedCall: true,
-          isVideoCall: true,
-        ),
-      ],
-    );
+    return ListView(children: _buildList(10));
+  }
+
+  List _buildList(int count) {
+    List<Widget> listItems = List();
+
+    for (int i = 0; i < count; i++) {
+      listItems.add(_CallItem(
+        isReceivedCall: i % 2 == 0,
+        isVideoCall: i % 2 == 0,
+      ));
+    }
+
+    return listItems;
   }
 }
 
